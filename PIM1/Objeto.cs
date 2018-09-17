@@ -1,40 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PIM1
 {
+    // clase que se encarga de guardar cada objeto de la secuencia
     class Objeto
     {
-        public int valor { get; set; }
-        public int anterior { get; set; }
-        public int posterior { get; set; }
+        public int Valor { get; set; }
+        public int Anterior { get; set; }
+        public int Posterior { get; set; }
+        public int Id { get; set; }
 
         // constructor
-        public Objeto(int ant, int val, int post)
+        public Objeto(int id, int ant, int val, int post)
         {
-            valor = val;
-            anterior = ant;
-            posterior = post;
+            Id = id;
+            Valor = val;
+            Anterior = ant;
+            Posterior = post;
         }
 
         // mapeo los valores con los colores
-        public string getColor(int val)
+        public Color GetColor(int val)
         {
             switch (val)
             {
                 case 1:
-                    return "ROJO";
+                    return Color.Red;
                 case 2:
-                    return "VERDE";
+                    return Color.ForestGreen;
                 case 3:
-                    return "AMARILLO";
+                    return Color.Yellow;
                 case 4:
-                    return "AZUL";
+                    return Color.LightSkyBlue;
                 default:
-                    return "ERROR";
+                    return Color.Black;
             }
         }
     }
