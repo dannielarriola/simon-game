@@ -93,26 +93,6 @@ namespace PIM1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SAVE {
-            get {
-                object obj = ResourceManager.GetObject("SAVE", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SAVE1 {
-            get {
-                object obj = ResourceManager.GetObject("SAVE1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap SAVE2 {
             get {
                 object obj = ResourceManager.GetObject("SAVE2", resourceCulture);

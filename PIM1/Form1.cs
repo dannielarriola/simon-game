@@ -91,6 +91,24 @@ namespace PIM1
             }
         }
 
+        // obtengo el color humanamente legible por cada valor
+        public string GetStringColor(int val)
+        {
+            switch (val)
+            {
+                case 1:
+                    return "ROJO";
+                case 2:
+                    return "VERDE";
+                case 3:
+                    return "AMARILLO";
+                case 4:
+                    return "AZUL";
+                default:
+                    return "NADA";
+            }
+        }
+
         // metodo que muestra la secuencia a memorizar
         private void MostrarSecuencia(Secuencia sec)
         {
@@ -154,7 +172,7 @@ namespace PIM1
             
             if (v != SecuenciaJuego.Objetos[contador - 1].Valor)
             {
-                label1.Text = "ERROR";
+                label1.Text = "ERROR, INTENTE NUEVAMENTE";
                 label1.Refresh();
                 Thread.Sleep(1000);
                 label1.Text = "";
@@ -183,6 +201,11 @@ namespace PIM1
             Thread.Sleep(2000);
             label1.Text = "";
             label1.Refresh();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
