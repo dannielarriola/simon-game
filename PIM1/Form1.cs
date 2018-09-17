@@ -34,6 +34,11 @@ namespace PIM1
             XmlFile = new SimonXml(FileName);
             XmlFile.ConvertXmlToSecuencia();
             secuencias = XmlFile.secuencias;
+            button1.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+            button2.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+            button3.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+            button4.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+            label1.Text = "";
             DisableButtons();
         }
 
@@ -102,7 +107,6 @@ namespace PIM1
                 Thread.Sleep(100);
             }
             EnableButtons();
-            
         }
 
         // metodo que se encarga de deshabilitar los botones mientras se ejecuta la secuencia a memorizar
@@ -125,30 +129,36 @@ namespace PIM1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ValidarValor(2, contador);
+            ValidarValor(2);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ValidarValor(1, contador);
+            ValidarValor(1);
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            ValidarValor(4, contador);
+            ValidarValor(4);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ValidarValor(3, contador);
+            ValidarValor(3);
         }
 
         // metodo que valida cada click dado en cada color
-        private void ValidarValor(int v, int cont)
+        private void ValidarValor(int v)
         {
-            if (v != SecuenciaJuego.Objetos[cont].Valor)
+            contador++;
+            
+            if (v != SecuenciaJuego.Objetos[contador - 1].Valor)
             {
-                MessageBox.Show("Error");
+                label1.Text = "ERROR";
+                label1.Refresh();
+                Thread.Sleep(1000);
+                label1.Text = "";
+                label1.Refresh();
                 secuencias.Add(new Secuencia(SecuenciaJuego.Juego + 1));
                 XmlFile.saveToFile(FileName, secuencias);
                 DisableButtons();
@@ -156,11 +166,23 @@ namespace PIM1
                 
                 contador = 0;
             }
-            contador++;
-            if (contador == SecuenciaJuego.Objetos.Count - 1)
+            if (contador == SecuenciaJuego.Objetos.Count)
             {
                 DisableButtons();
+                Thread.Sleep(600);
+                Iniciar();
+                contador = 0;
             }
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            XmlFile.saveToFile(FileName, secuencias);
+            label1.Text = "DATOS GUARDADOS";
+            label1.Refresh();
+            Thread.Sleep(2000);
+            label1.Text = "";
+            label1.Refresh();
         }
     }
 }
